@@ -26,7 +26,7 @@ default: &default
 
 development:
   <<: *default
-  database: money_saver_development
+  database: wise_spender_development
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -60,7 +60,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: money_saver_test
+  database: wise_spender_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -84,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: money_saver_production
-  username: money_saver
+  database: wise_spender_production
+  username: wise_spender
   password: <%= ENV["MONEY_SAVER_DATABASE_PASSWORD"] %>
