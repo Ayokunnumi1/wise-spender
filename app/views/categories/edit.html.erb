@@ -1,0 +1,15 @@
+<h1>Edit Category</h1>
+
+<section class= ''>
+<%= form_with(model: @category, url: category_path(@category), method: :patch) do |form| %>
+  <%= form.label :name, "New Category Name:"  %>
+  <%= form.text_field :name %>
+<br><br>
+  <%= form.label :icon, "New Category Icon:"  %>
+  <%= form.collection_select(:icon, [ "🍔", "👚", "🏥", "🏫", "📚", "🐷", "👪", "🎁", "💌", "👔", "🐈", "🛠", "🏖", "🚌", "💡" ], :to_s, :to_s, { prompt: "---" }, { class: 'fa-select' }) %>
+
+  <div class= ''>
+  <%= form.submit "Save Category", class: '' %>
+  </div>
+  <% end %>
+</section>
