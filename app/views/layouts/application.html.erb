@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MoneySaver</title>
+    <title>Wise Spender</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,7 +12,10 @@
 
   <body>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% flash.each do |key, message| %>
+  <div class="alert <%= key %>">
+    <%= message %>
+  </div>
+  <% end %>
   </body>
 </html>
