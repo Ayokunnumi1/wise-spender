@@ -1,2 +1,16 @@
-<h1>Categories#new</h1>
-<p>Find me in app/views/categories/new.html.erb</p>
+<h1>Category Form</h1>
+
+<%= form_with(model:@category, url: categories_path, local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :name, "Category:" %>
+    <%= form.collection_select(:name, ["Food", "Clothes", "Health", "Rent", "School", "Savings", "Family", "Charity", "Investment", "Business", "Pet", "Maintenance", "Treats", "Transportation", "Other"], :to_s, :to_s, { prompt: "---" }, { class: '' }) %>
+  </div>
+
+  <div class="field">
+  <%= form.label :icon, "Choose Category Icon:" %>
+  <%= form.collection_select(:icon, [ "🍔", "👚", "🏥", "🏫", "📚", "🐷", "👪", "🎁", "💌", "👔", "🐈", "🛠", "🏖", "🚌", "💡" ], :to_s, :to_s, { prompt: "---" }, { class: '' }) %>
+  </div>
+
+    <div><%= form.submit 'Submit Food', class: '' %></div>
+<% end %>
