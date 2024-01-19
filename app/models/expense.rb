@@ -5,7 +5,6 @@ class Expense < ApplicationRecord
   
   validates :amount, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :name, presence: true
-  validates :category_id, presence: true
 
   def most_recent
   end
