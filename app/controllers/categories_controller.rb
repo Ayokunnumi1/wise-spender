@@ -4,6 +4,8 @@ class CategoriesController < ApplicationController
   def index
     @categories = current_user.categories
     @total_expenses = @categories.sum { |category| category.expenses.sum(:amount) }
+    @income = current_user.incomes.last
+    @balance = @income ? @income.amount - @total_expenses : - @total_expenses
   end
 
   def new
