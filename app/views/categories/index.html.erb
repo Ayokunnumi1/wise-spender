@@ -1,18 +1,19 @@
 <section>
     <div>
         <p>Balance <button>Hide Bal</button> </p>
-        <p>Expenses:</p>
-        <p>Funds:</p>
-        <button>Add Credit</button><button>Reset Credit</button>
+        <p>Expenses: $<%= @total_expenses %></p>
+        <p>Income:</p>
+        <button>Add Income</button><button>Reset Income</button>
     </div>
 
     <% @categories.each do |category| %>
         <div class= 'category-item'>
             <div><%= category.icon %></div>
-            <p> <%= category.name %> </p>
+            <%= link_to category.name, category_path(category) %> 
             <%= button_to 'Edit', edit_category_path(category), method: :get %>
             <%= button_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
             <%= button_to 'View', category_path(category), method: :get %> 
+            <p><%= category.expenses.sum(:amount) %></p>
             <p><%= Date.today.strftime('%m/%d/%Y') %></p>
         </div>
     <% end %>
