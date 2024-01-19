@@ -1,2 +1,9 @@
-<h1>Incomes#new</h1>
-<p>Find me in app/views/incomes/new.html.erb</p>
+<%= form_with(model: @income, local: true) do |form| %>
+  <%= form.label :amount %>
+  <%= form.number_field :amount %>
+
+
+  <div class= ''>
+    <%= form.submit "Proceed", class: '' %>
+  </div>
+<% end %>
