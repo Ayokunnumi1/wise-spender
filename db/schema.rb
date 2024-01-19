@@ -60,7 +60,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_19_062745) do
   end
 
   add_foreign_key "categories", "users"
-  add_foreign_key "expenses", "categories"
+  add_foreign_key "expenses", "categories", on_delete: :cascade
   add_foreign_key "expenses", "users", column: "author_id"
   add_foreign_key "incomes", "users"
 end
