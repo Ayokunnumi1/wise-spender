@@ -1,4 +1,6 @@
 <section>
+  <p> <%= @category.name %> </p>
+  <p> Total Amount: $<%= @category.expenses.sum(:amount) %> </p>
   <% @category.expenses.each do |expense| %>
     <div id="expense_<%= expense.id %>">
       <div>💸</div>
