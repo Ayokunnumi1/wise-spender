@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'incomes/new'
-  get 'incomes/create'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -13,4 +11,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index]
   resources :expenses, only: [:new, :create, :edit, :update, :destroy, :show]
   resources :categories, only: [:index, :new, :create, :edit, :update, :destroy, :show] 
+  resources :incomes, only: [:new, :create] 
+  resources :incomes do
+    collection do
+      post 'clear_all'
+    end
+  end 
 end
