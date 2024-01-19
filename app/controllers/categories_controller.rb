@@ -42,5 +42,10 @@ class CategoriesController < ApplicationController
   @category.destroy
   redirect_to categories_path, notice: 'Category was successfully deleted.'
  end
+
+ def show
+  @category = Category.find(params[:id])
+  @expenses = @category.expenses
+ end
   
 end
