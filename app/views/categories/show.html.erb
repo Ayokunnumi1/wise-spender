@@ -1,0 +1,13 @@
+<section>
+  <% @category.expenses.each do |expense| %>
+    <div id="expense_<%= expense.id %>">
+      <div>💸</div>
+      <p><%= expense.name %></p>
+      <p>$<%= expense.amount %></p>
+      <%= link_to 'Edit', edit_expense_path(expense), class: '' %>
+      <%= button_to 'Delete', expense_path(expense), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: '' %>
+    </div>
+  <% end %>
+  
+  <%= link_to 'Add Expenses', new_expense_path(category_id: @category.id) %>
+</section>

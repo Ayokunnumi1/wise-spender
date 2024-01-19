@@ -1,10 +1,10 @@
-<h1>Expenses Form</h1>
+<h1>Edit Expense</h1>
 
-<%= form_with(model:@expense, url: expenses_path, local: true) do |form| %>
+<%= form_with(model:@expense, url: expense_path(@expense), local: true) do |form| %>
     
     <%= form.hidden_field :category_id, value: @category.id %>
     
-    <%= form.label :name, 'Breakdown:', class: "" %>
+    <%= form.label :name, 'Edit Breakdown:', class: "" %>
     <%= form.text_field :name %><br />
 
     <%= form.label :amount, 'Amount', class: "" %>
