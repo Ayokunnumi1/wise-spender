@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = current_user.categories
+    @total_expenses = @categories.sum { |category| category.expenses.sum(:amount) }
   end
 
   def new
