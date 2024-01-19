@@ -4,7 +4,7 @@ class CreateExpenses < ActiveRecord::Migration[7.1]
     t.string "name"
     t.integer "amount"
     t.references :author, foreign_key: { to_table: :users }, null: false
-    t.references :category, foreign_key: true, null: false
+    t.references :category, null: false, foreign_key: { on_delete: :cascade }
     t.timestamps
     end
   end
