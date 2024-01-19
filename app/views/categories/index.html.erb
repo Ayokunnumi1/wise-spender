@@ -1,22 +1,34 @@
 <section>
+    <div class='category-navbar'>
+    <%= image_tag('hamburger.svg', class: '') %>
+    <p>Categories</p>
+    <%= button_to(destroy_user_session_path, method: :delete) do %>
+    <%= image_tag('log-out.png', alt: 'log out logo', class: '') %>
+    <% end %>
+   </div>
+
+
     <div>
-        <p>Balance <button>Hide Bal</button> </p>
+        <p>Balance: $ <%= @balance %></p>
         <p>Expenses: $<%= @total_expenses %></p>
-        <p>Income:</p>
-        <button>Add Income</button><button>Reset Income</button>
+        <p>Income: $<%= @income ? @income.amount : 0 %></p>
+        <%= link_to '➕ Add Income', new_income_path, class: '' %></p>
+        <%= button_to '➖ Reset Income', clear_all_incomes_path, method: :post %>
     </div>
 
-    <% @categories.each do |category| %>
-        <div class= 'category-item'>
-            <div><%= category.icon %></div>
-            <%= link_to category.name, category_path(category) %> 
-            <%= button_to 'Edit', edit_category_path(category), method: :get %>
-            <%= button_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%= button_to 'View', category_path(category), method: :get %> 
-            <p><%= category.expenses.sum(:amount) %></p>
-            <p><%= Date.today.strftime('%m/%d/%Y') %></p>
-        </div>
-    <% end %>
+    <div>
+        <% @categories.each do |category| %>
+            <div class= 'category-item'>
+                <div><%= category.icon %></div>
+                <%= link_to category.name, category_path(category) %>
+                <%= button_to 'Edit', edit_category_path(category), method: :get %>
+                <%= button_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= button_to 'View', category_path(category), method: :get %>
+                <p>$<%= category.expenses.sum(:amount) %></p>
+                <p><%= Date.today.strftime('%m/%d/%Y') %></p>
+            </div>
+        <% end %>
+    </div>
 
 
    <%= button_to 'Add New Category', new_category_path, method: :get %>
