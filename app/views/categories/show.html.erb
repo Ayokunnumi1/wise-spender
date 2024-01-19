@@ -1,5 +1,12 @@
 <section>
-  <p> <%= @category.name %> </p>
+ <div class='expense-navbar'>
+    <%= button_to(categories_path, method: :get) do %>
+    <%= image_tag('back-arrow.svg', class: '') %>
+    <% end %>
+    <p> <%= @category.name %> </p>
+    <%= image_tag('hamburger.svg', class: '') %>
+  </div>
+
   <p> Total Amount: $<%= @category.expenses.sum(:amount) %> </p>
   <% @category.expenses.each do |expense| %>
     <div id="expense_<%= expense.id %>">
