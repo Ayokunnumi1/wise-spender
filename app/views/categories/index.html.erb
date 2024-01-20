@@ -1,35 +1,46 @@
-<section>
+<section class='category-section'>
     <div class='category-navbar'>
-    <%= image_tag('hamburger.svg', class: '') %>
-    <p>Categories</p>
-    <%= button_to(destroy_user_session_path, method: :delete) do %>
-    <%= image_tag('log-out.png', alt: 'log out logo', class: '') %>
+    <%= image_tag('hamburger.svg', class: 'hamburger') %>
+    <p class= 'categories-text'>CATEGORIES</p>
+    <%= button_to(destroy_user_session_path, method: :delete, class: 'log-out-btn') do %>
+    <%= image_tag('log-out.png', alt: 'log out logo', class: 'log-out-img') %>
     <% end %>
    </div>
 
 
-    <div>
-        <p>Balance: $ <%= @balance %></p>
+    <div class='balance-container'>
+        <p>Balance: 
+        <br/>
+        $ <span class="balance-text"><%= @balance %></span></p><br/>
         <p>Expenses: $<%= @total_expenses %></p>
         <p>Income: $<%= @income ? @income.amount : 0 %></p>
-        <%= link_to '➕ Add Income', new_income_path, class: '' %></p>
-        <%= button_to '➖ Reset Income', clear_all_incomes_path, method: :post %>
+        <div class='control-income'>
+            <%= button_to '➕ Add Income', new_income_path, method: :get %></p>
+            <%= button_to '➖ Reset Income', clear_all_incomes_path, method: :post %>
+        </div>
     </div>
 
-    <div>
+    <div class="categories-container">
         <% @categories.each do |category| %>
             <div class= 'category-item'>
-                <div><%= category.icon %></div>
-                <%= link_to category.name, category_path(category) %>
-                <%= button_to 'Edit', edit_category_path(category), method: :get %>
-                <%= button_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
-                <%= button_to 'View', category_path(category), method: :get %>
-                <p>$<%= category.expenses.sum(:amount) %></p>
-                <p><%= Date.today.strftime('%m/%d/%Y') %></p>
-            </div>
+                
+                        <div class='category-icon'><%= category.icon.html_safe %></div>
+                        <div>
+                            <p class='category-name'><%= link_to category.name, category_path(category) %></p>
+                            <div class='category-path'>
+                                <%= button_to 'Edit', edit_category_path(category), method: :get %>
+                                <%= button_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
+                                <%= button_to 'View', category_path(category), method: :get %>
+                            </div>
+                        </div>
+                        <div>
+                        <p class='category-amt'>$<%= category.expenses.sum(:amount) %></p>
+                        <p class='today-date'><%= category.created_at.strftime('%m/%d/%Y') %></p>
+                        </div>
+                        </div>
         <% end %>
     </div>
 
 
-   <%= button_to 'Add New Category', new_category_path, method: :get %>
+   <div class="add-category-button"><%= button_to 'Add New Category', new_category_path, method: :get, class: "add-category-btn" %></div>
 </section>
