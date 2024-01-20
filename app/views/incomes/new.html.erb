@@ -1,9 +1,15 @@
-<%= form_with(model: @income, local: true) do |form| %>
-  <%= form.label :amount %>
-  <%= form.number_field :amount %>
-
-
-  <div class= ''>
-    <%= form.submit "Proceed", class: '' %>
+<section class='form-category-container'>
+  <div class='form-category-content'>
+    <%= form_with(model: @income, local: true, class: 'category-form') do |form| %>
+      <div class='category-field'>
+        <%= form.label :amount %>
+        <%= form.number_field :amount %>
+      </div>
+    
+    
+      <div class='category-field submit-food-btn'>
+        <%= form.submit "Proceed", class: 'submit-food' %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</section>
