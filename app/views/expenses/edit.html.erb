@@ -1,14 +1,22 @@
-<h1>Edit Expense</h1>
-
-<%= form_with(model:@expense, url: expense_path(@expense), local: true) do |form| %>
-    
-    <%= form.hidden_field :category_id, value: @category.id %>
-    
-    <%= form.label :name, 'Edit Breakdown:', class: "" %>
-    <%= form.text_field :name %><br />
-
-    <%= form.label :amount, 'Amount', class: "" %>
-    <%= form.number_field :amount %><br />
-
-    <%= form.submit 'Save Expense', class: "" %>
-<% end %>
+<section class='form-category-container'>
+    <div class='form-category-content'>
+        <h1>Edit Expense</h1>
+        
+        <%= form_with(model:@expense, url: expense_path(@expense), local: true, class: 'category-form') do |form| %>
+        
+            <%= form.hidden_field :category_id, value: @category.id %>
+        
+            <div class="category-field">
+                <%= form.label :name, 'New Expense', class: "" %>
+                <%= form.text_field :name %>
+            </div>
+        
+            <div class="category-field">
+                <%= form.label :amount, 'New Amount', class: "" %>
+                <%= form.number_field :amount %>
+            </div>
+        
+            <div class="category-field submit-food-btn"><%= form.submit 'Save Expense', class: "submit-food" %></div>
+        <% end %>
+    </div>
+</section>
