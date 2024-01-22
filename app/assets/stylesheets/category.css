@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nova+Mono&display=swap');
 
+.user-icon {
+    width: 40px;
+    height: 40px;
+}
+
 .category-section {
     font-family: "Fira Sans", sans-serif;
     height: 100vh;
@@ -22,12 +27,27 @@
     border: none;
 }
 
+/* .category-sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    z-index: 9999;
+} */
+
 .menu {
     display: none;
 }
 
 .menu.show-menu {
     display: block;
+    border: 3px solid red;
 }
 
 .log-out-btn,
@@ -87,7 +107,6 @@
     flex-wrap: wrap;
     justify-content: space-around;
     padding-bottom: 70px;
-    /* Adjust this value based on the height of .add-category-button */
 }
 
 .category-item {

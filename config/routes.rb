@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'flashes/index'
-  devise_for :users
+  
+  devise_for :users, controllers: { registrations: 'registrations' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index]
   resources :expenses, only: [:new, :create, :edit, :update, :destroy, :show]
   resources :categories, only: [:index, :new, :create, :edit, :update, :destroy, :show] 
+  resources :flashes, only: [:index]
   resources :incomes, only: [:new, :create] 
   resources :incomes do
     collection do

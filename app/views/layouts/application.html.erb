@@ -7,21 +7,27 @@
     <%= csp_meta_tag %>
 
     <%= favicon_link_tag 'favicon.png' %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "category", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "formCategory", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "expense", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "formExpense", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "signUp", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -30,9 +36,41 @@
   <body>
     <%= yield %>
     <% flash.each do |key, message| %>
-  <div class="alert <%= key %>">
+    <div class="alert <%= key %>">
+    <%= image_tag 'green-tick.png', class: 'tick-img' %>
     <%= message %>
   </div>
   <% end %>
-  </body>
+
+  <% if user_signed_in? %>
+  <section class='menu'>
+    <div class="close_icon_cont" onclick="toggleMenu()"><p class="close_icon">x</p></div>
+    <div>
+      <%= image_tag 'user.svg', class: 'user-icon' %>
+      <p><%= current_user.name %></p>
+      <p><%= current_user.email %></p>
+    </div>
+    <br><br>
+    <ul>
+      <%= link_to 'Home', categories_path, onclick: 'closeMenu()', class: 'menulinks' %>
+      <%= link_to 'Edit Profile', edit_user_registration_path, onclick: 'closeMenu()', class: 'menulinks' %>
+      <%= link_to 'Change Password', edit_user_registration_path, onclick: 'closeMenu()', class: 'menulinks' %>
+      <li class="menulinks"><%= button_to 'Sign Out', destroy_user_session_path, method: :delete, onclick: 'closeMenu()', class: 'removebtnfeature' %></li>
+    </ul>
+  </section>
+<% end %>
+
+<script>
+  function toggleMenu() {
+    console.log('toggleMenu');
+    var menu = document.querySelector('.menu');
+    if (menu.style.display === 'none') {
+      menu.style.display = 'block';
+    } else {
+      menu.style.display = 'none';
+    }
+  }
+</script>
+
+</body>
 </html>

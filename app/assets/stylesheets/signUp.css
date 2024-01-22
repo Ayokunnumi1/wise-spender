@@ -62,12 +62,20 @@ body {
     font-size: 20px;
 }
 
-.forgot-password,
-.forgot-password a {
+.forgot-password {
     text-align: center;
     color: gray;
-    text-decoration: none;
     margin-top: 20px;
+}
+
+.forgot-password a,
+.forgot-password-btn input[type="submit"] {
+    color: #3778c2;
+    text-decoration: underline;
+}
+
+.forgot-password-text {
+    font-size: 15px;
 }
 
 @media (min-width: 768px) {
@@ -84,7 +92,12 @@ body {
         align-items: center;
     }
 
-        .signUp-error-msg {
-            margin-left: 30px;
-        }
+    .signUp-error-msg {
+        margin-left: 30px;
+    }
+
+    .forgot-password-text {
+        font-size: 25px;
+    }
+
 }

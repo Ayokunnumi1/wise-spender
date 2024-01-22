@@ -1,26 +1,30 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<section class='signIn-input-container'>  
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class='signIn-navbar'>
+        <%= image_tag('back-arrow.svg', class: '') %>
+        <p class= 'logIn-text'>LOGIN</p>
+       <div class="logIn-btn">
+        <%= f.submit "Log in" %>
+      </div>
+      </div>
+  
+    <div class='signUp-input-container'>
+      <div class='signIn-input'>
+        <div class="signIn-field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %><br />
+        </div>
+        <div class="signIn-field">
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %><br />
+        </div>
+      </div>
+        
+        <% end %>
+        
+        <div>
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+        </div>
+      <% end %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
