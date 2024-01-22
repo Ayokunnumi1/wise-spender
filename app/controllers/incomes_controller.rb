@@ -17,7 +17,8 @@ class IncomesController < ApplicationController
 
   def clear_all
     current_user.incomes.destroy_all
-    redirect_to categories_path, notice: 'All incomes cleared successfully.'
+    flash[:success] = 'All incomes cleared successfully.'
+    redirect_to categories_path
   end
 
   private
