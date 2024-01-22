@@ -79,9 +79,8 @@
         font-size: 30px;
     }
     
-    .most-recent p {
-        font-size: 30px;
-        letter-spacing: 15px;
+    .most-recent {
+        display: none;
     }
 
         .add-category-btn {
@@ -92,8 +91,3 @@
         }
 }
 
-@media (min-width: 1024px) {
-        .most-recent p {
-        font-size: 40px;
-    }
-}

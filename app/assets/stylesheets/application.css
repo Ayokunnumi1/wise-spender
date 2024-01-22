@@ -9,12 +9,27 @@
 }
 
 .alert {
-    border: 3px solid red;
-    position: absolute;
+    animation: fadeOut 10s forwards;
+    position: fixed;
     top: 50%;
     left: 50%;
-    translate:(-50%, -50%);
-    animation: fadeOut 10s forwards;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    color: black;
+    font-size: 20px;
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 400;
+    background-color: white;
+    text-align: center;
+    border-radius: 20px;
+    width: 250px;
+    height: 400px;
+    box-shadow: 0 0 10px 0 rgba(213, 208, 208, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
 
 @keyframes fadeOut {
@@ -25,5 +40,19 @@
     100% {
         opacity: 0;
         visibility: hidden;
+    }
+}
+
+.tick-img {
+    width: 70px;
+    height: 70px;
+}
+
+@media (min-width: 768px) {
+    .alert {
+        width: 400px;
+        height: 400px;
+        font-size: 25px;
+        letter-spacing: 5px;
     }
 }

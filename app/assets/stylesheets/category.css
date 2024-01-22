@@ -174,6 +174,12 @@
        height: 100%;
     }
 
+    .category-name,
+    .category-name a,
+    .category-amt {
+        font-size: 25px;
+    }
+
     
 }
 
@@ -187,7 +193,9 @@
       font-size: 40px;
     }
 
-    .category-name {
-     font-size: 20px;
-    }
+        .log-out-btn,
+        .log-out-img {
+            width: 50px;
+            height: 50px;
+        }
 }
