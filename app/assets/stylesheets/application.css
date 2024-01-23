@@ -1,58 +1,612 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nova+Mono&display=swap');
 
 *,
 *::after,
 *::before {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .alert {
-    animation: fadeOut 10s forwards;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    color: black;
-    font-size: 20px;
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 400;
-    background-color: white;
-    text-align: center;
-    border-radius: 20px;
-    width: 250px;
-    height: 400px;
-    box-shadow: 0 0 10px 0 rgba(213, 208, 208, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+  animation: fadeOut 10s forwards;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  color: black;
+  font-size: 20px;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  background-color: white;
+  text-align: center;
+  border-radius: 20px;
+  width: 250px;
+  height: 400px;
+  box-shadow: 0 0 10px 0 rgba(213, 208, 208, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 @keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 .tick-img {
-    width: 70px;
-    height: 70px;
+  width: 70px;
+  height: 70px;
+}
+
+.user-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.category-section {
+  font-family: "Fira Sans", sans-serif;
+  height: 100vh;
+}
+
+.category-navbar {
+  background-color: #3778c2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.hamburger {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+/* .category-sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    z-index: 9999;
+} */
+
+.menu {
+  display: none;
+}
+
+/* .menu.show-menu {
+  display: block;
+  border: 3px solid red;
+} */
+
+.log-out-btn,
+.log-out-img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  outline: none;
+  border: none;
+}
+
+.categories-text {
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  font-style: normal;
+}
+
+.balance-container {
+  margin: 20px;
+  box-shadow: 0 0 10px gray;
+  border-radius: 10px;
+  padding: 10px;
+  color: rgb(50, 50, 120);
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.balance-text {
+  color: black;
+  font-size: 25px;
+}
+
+.control-income {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  font-size: 10px;
+  color: gray;
+}
+
+.control-income,
+.category-path,
+button {
+  border: none;
+  outline: none;
+  background: none;
+  color: gray;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.categories-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-bottom: 70px;
+}
+
+.category-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.category-path {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+}
+
+.today-date {
+  font-style: italic;
+  font-size: 14px;
+  color: gray;
+}
+
+.forgot-password a,
+.forgot-password-btn input[type="submit"] {
+  color: #3778c2;
+  text-decoration: underline;
+}
+
+.category-name,
+.category-name a,
+.category-amt {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.category-name a:hover {
+  color: #3778c2;
+}
+
+.category-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(205, 209, 228, 0.5);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.add-category-button {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #5fb523;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.add-category-btn {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid white;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.expense-section {
+  font-family: "Fira Sans", sans-serif;
+  height: 100vh;
+}
+
+.expense-navbar {
+  background-color: #3778c2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.expense-text {
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.amt-container {
+  margin: 20px;
+  box-shadow: 0 0 10px gray;
+  border-radius: 10px;
+  padding: 10px;
+  color: rgb(50, 50, 120);
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.most-recent {
+  background-color: #3778c2;
+  color: white;
+  text-align: center;
+  padding: 5px;
+}
+
+.add-expense-button {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #5fb523;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.add-expense-btn {
+  border: 1px solid white;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 25px;
+  width: 100%;
+  font-weight: 600;
+}
+
+.form-category-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-category-content {
+  background-color: #3778c2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px gray;
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.category-form,
+.category-field {
+  padding: 10px;
+}
+
+.submit-food {
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #5fb523;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.submit-food-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+h1 {
+  text-decoration: underline;
+}
+
+.form-expense-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-expense-content {
+  background-color: #3778c2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px gray;
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.expense-form,
+.expense-field {
+  padding: 10px;
+}
+
+.submit-expense {
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #5fb523;
+  color: white;
+  font-size: 25px;
+  font-weight: 400;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.submit-expense-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.expense-field input[type="text"],
+.expense-field input[type="number"] {
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.signUp-navbar,
+.signIn-navbar {
+  background-color: #3778c2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  font-style: normal;
+  font-family: "Fira Sans", sans-serif;
+}
+
+body {
+  background-color: rgb(239, 239, 240);
+}
+
+.signUp-input,
+.signIn-input {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+}
+
+.signUp-field input[type="text"],
+.signUp-field input[type="email"],
+.signUp-field input[type="password"] {
+  padding: 15px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 0.5px solid gray;
+}
+
+.signIn-field input[type="email"],
+.signIn-field input[type="password"] {
+  padding: 15px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 0.5px solid gray;
+}
+
+.signUp-error-msg {
+  margin-left: 20px;
+}
+
+.next-signUp input[type="submit"],
+.logIn-btn input[type="submit"] {
+  border: none;
+  outline: none;
+  background: none;
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.forgot-password {
+  text-align: center;
+  color: gray;
+  margin-top: 20px;
+}
+
+.forgot-password-text {
+  font-size: 15px;
 }
 
 @media (min-width: 768px) {
-    .alert {
-        width: 400px;
-        height: 400px;
-        font-size: 25px;
-        letter-spacing: 5px;
-    }
+  .alert {
+    width: 400px;
+    height: 400px;
+    font-size: 25px;
+    letter-spacing: 5px;
+  }
+
+  .category-navbar {
+    flex-direction: row;
+  }
+
+  .balance-text {
+    font-size: 30px;
+  }
+
+  .control-income {
+    font-size: 15px;
+  }
+
+  .categories-text {
+    font-size: 25px;
+  }
+
+  .add-category-btn {
+    font-size: 30px;
+    letter-spacing: 3px;
+  }
+
+  .category-name,
+  .category-name a,
+  .category-amt {
+    font-size: 25px;
+  }
+
+  .expense-text {
+    font-size: 30px;
+  }
+
+  .most-recent {
+    display: none;
+  }
+
+  .add-expense-btn {
+    font-size: 30px;
+    letter-spacing: 3px;
+  }
+
+  .form-category-content {
+    width: 500px;
+    height: 500px;
+    font-size: 30px;
+    letter-spacing: 5px;
+  }
+
+  .category-form,
+  .category-field {
+    padding: 20px;
+  }
+
+  .submit-food {
+    padding: 20px;
+    font-size: 25px;
+  }
+
+  .form-expense-content {
+    width: 400px;
+    height: 400px;
+    font-size: 25px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  .expense-form,
+  .expense-field {
+    padding: 20px;
+  }
+
+  .expense-food {
+    padding: 20px;
+    font-size: 25px;
+  }
+
+  .expense-field input[type="text"],
+  .expense-field input[type="number"] {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .signUp-input,
+  .signIn-input {
+    width: 500px;
+    box-shadow: 0 0 10px gray;
+  }
+
+  .signUp-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .signUp-error-msg {
+    margin-left: 30px;
+  }
+
+  .forgot-password-text {
+    font-size: 25px;
+  }
+}
+
+/* Laptop/desktop styles */
+@media (min-width: 1024px) {
+  .category-navbar {
+    flex-direction: row;
+  }
+
+  .balance-text {
+    font-size: 40px;
+  }
+
+  .log-out-btn,
+  .log-out-img {
+    width: 50px;
+    height: 50px;
+  }
 }

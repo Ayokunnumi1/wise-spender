@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-    has_many :categories 
-    has_many :expenses, through: :categories  
-    has_many :incomes  
-    
-    validates :name, presence: true
+  has_many :categories
+  has_many :expenses, through: :categories
+  has_many :incomes
+
+  validates :name, presence: true
 end
