@@ -6,6 +6,8 @@ gem 'dotenv-rails', groups: %i[development test]
 
 gem 'cancancan'
 
+gem 'jquery-rails'
+
 # gem 'tailwindcss-rails'
 
 gem 'rubocop', '>= 1.0', '< 2.0'

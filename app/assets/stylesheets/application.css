@@ -25,7 +25,6 @@
 }
 
 .alert {
-  animation: fadeOut 10s forwards;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -48,15 +47,33 @@
   gap: 20px;
 }
 
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
+.flashes_container {
+  background-color: #3778c2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  color: white;
+  height: 100vh;
+}
 
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
+.flashes_btn_container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.regbtns {
+  background-color: #60b524;
+  color: #fff;
+  text-align: center;
+  width: 160px;
+  padding: 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 25px;
 }
 
 .tick-img {
@@ -64,9 +81,17 @@
   height: 70px;
 }
 
+a.logIn-forgot-password {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: gray;
+  margin-top: 20px;
+}
+
 .user-icon {
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
 }
 
 .category-section {
@@ -91,28 +116,56 @@
   border: none;
 }
 
-/* .category-sidebar {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 100%;
-    background-color: #f8f9fa;
-    padding: 20px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    overflow: auto;
-    z-index: 9999;
-} */
+.dismiss-flash {
+  border: 3px solid gray;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+}
+
+.menu-links a,
+.menu-links button {
+  text-decoration: none;
+  padding: 5px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 300;
+  width: 100%;
+}
+
+.user-details {
+  padding: 10px;
+}
 
 .menu {
   display: none;
+  padding-top: 50px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  background: linear-gradient(to right, #3778c2, #406ea2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  overflow: auto;
+  z-index: 9999;
+  color: white;
+  transition: all 2s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* .menu.show-menu {
-  display: block;
-  border: 3px solid red;
-} */
+.close_icon_cont {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  cursor: pointer;
+}
 
 .log-out-btn,
 .log-out-img {
@@ -162,8 +215,12 @@ button {
   outline: none;
   background: none;
   color: gray;
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
+}
+
+.category-path a {
+  text-decoration: none;
 }
 
 .categories-container {
@@ -484,6 +541,15 @@ body {
 }
 
 @media (min-width: 768px) {
+  .flashes_container {
+    padding: 15px;
+  }
+
+  .flashes_btn_container {
+    display: flex;
+    flex-direction: row;
+  }
+
   .alert {
     width: 400px;
     height: 400px;
