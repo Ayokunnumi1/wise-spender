@@ -6,6 +6,8 @@ gem 'dotenv-rails', groups: %i[development test]
 
 gem 'cancancan'
 
+gem 'rails-controller-testing'
+
 gem 'jquery-rails'
 
 # gem 'tailwindcss-rails'
