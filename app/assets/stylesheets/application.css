@@ -172,6 +172,17 @@ a.logIn-forgot-password {
   border-radius: 10px;
 }
 
+.control-income,
+.category-path,
+button {
+  border: none;
+  outline: none;
+  background: none;
+  color: gray;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .menu-links {
   display: flex;
   flex-direction: column;
@@ -263,17 +274,6 @@ a.logIn-forgot-password {
   gap: 5px;
   font-size: 10px;
   color: gray;
-}
-
-.control-income,
-.category-path,
-button {
-  border: none;
-  outline: none;
-  background: none;
-  color: gray;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 .category-path a {
