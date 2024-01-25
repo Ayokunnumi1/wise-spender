@@ -39,8 +39,6 @@
       <ul class='menu-links'>
     <ul class='menu-links'>
        <li class="menulinks"><%= link_to 'Home', categories_path, onclick: 'closeMenu()', class: 'menulinks' %></li>
-       <li class="menulinks"><%= link_to 'Edit Profile', edit_user_registration_path, onclick: 'closeMenu()', class: 'menulinks' %></li>
-       <li class="menulinks"><%= link_to 'Change Password', edit_user_registration_path, onclick: 'closeMenu()', class: 'menulinks' %></li>
        <li class="menulinks"><%= button_to 'Sign Out', destroy_user_session_path, method: :delete, onclick: 'closeMenu()', class: 'removebtnfeature' %></li>
     </ul>
       </ul>

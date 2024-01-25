@@ -131,7 +131,7 @@ a.logIn-forgot-password {
 
 .menu-links a,
 .menu-links button {
-  text-decoration: none;
+  text-decoration: underline;
   padding: 5px;
   color: #fff;
   font-size: 15px;
@@ -140,7 +140,11 @@ a.logIn-forgot-password {
 }
 
 .user-details {
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }
 
 .menu {
@@ -152,12 +156,13 @@ a.logIn-forgot-password {
   left: 0;
   width: 300px;
   height: 100%;
-  background: linear-gradient(to right, #3778c2, #406ea2);
+  background-color: #3778c2;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   overflow: auto;
   z-index: 9999;
   color: white;
   transition: all 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  letter-spacing: 3px;
 }
 
 .close_icon_cont {
