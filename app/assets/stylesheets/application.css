@@ -89,6 +89,56 @@ a.logIn-forgot-password {
   margin-top: 20px;
 }
 
+.password_change_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  padding: 10px;
+}
+
+.new_password_input_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.new_password_input input[type="password"],
+.new_password_input input[type="submit"] {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  outline: none;
+}
+
+.new_password_input input[type="submit"] {
+  background-color: #113258;
+  color: #fff;
+}
+
+.new_password_input_container a {
+  color: #fff;
+  text-decoration: underline;
+  margin-top: 0;
+}
+
+.password_change {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #3778c2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px gray;
+  color: #fff;
+  width: 300px;
+  padding: 10px;
+  text-shadow: 1px 1px 1px black;
+}
+
 .user-icon {
   width: 80px;
   height: 80px;
@@ -137,6 +187,7 @@ a.logIn-forgot-password {
   font-size: 15px;
   font-weight: 300;
   width: 100%;
+  text-shadow: 1px 1px 1px black;
 }
 
 .user-details {
@@ -163,6 +214,7 @@ a.logIn-forgot-password {
   color: white;
   transition: all 2s cubic-bezier(0.25, 0.1, 0.25, 1);
   letter-spacing: 3px;
+  text-shadow: 1px 1px 1px black;
 }
 
 .close_icon_cont {
