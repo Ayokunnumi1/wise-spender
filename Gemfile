@@ -8,6 +8,8 @@ gem 'cancancan'
 
 gem 'rails-controller-testing'
 
+gem 'capybara'
+
 gem 'jquery-rails'
 
 # gem 'tailwindcss-rails'
