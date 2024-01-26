@@ -77,5 +77,8 @@ group :development, :test do
   gem 'capybara'
 end
 
+group :development, :test do
+  gem 'factory_bot_rails'
+end
 
 gem 'devise', '~> 4.9'
