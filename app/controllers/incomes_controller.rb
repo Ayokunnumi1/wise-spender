@@ -1,6 +1,6 @@
 class IncomesController < ApplicationController
   before_action :authenticate_user!
-
+  
   def new
     @income = current_user.incomes.build
   end

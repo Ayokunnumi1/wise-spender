@@ -23,7 +23,6 @@ default: &default
   password: <%= ENV['POSTGRES_PASSWORD'] %>
   host: localhost
 
-
 development:
   <<: *default
   database: wise_spender_development
@@ -32,7 +31,7 @@ development:
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: money_saver
+  #username: wise_spender
 
   # The password associated with the PostgreSQL role (username).
   #password:
@@ -86,4 +85,4 @@ production:
   <<: *default
   database: wise_spender_production
   username: wise_spender
-  password: <%= ENV["MONEY_SAVER_DATABASE_PASSWORD"] %>
+  password: <%= ENV["WISE_SPENDER_DATABASE_PASSWORD"] %>

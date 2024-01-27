@@ -1,10 +1,6 @@
 require "active_support/core_ext/integer/time"
-require 'dotenv/rails-now'
-require 'dotenv/load'
-require "rails/all"
 
 Rails.application.configure do
-  Dotenv::Railtie.load
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
@@ -12,7 +8,7 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.enable_reloading = true
 
-   # Do not eager load code on boot.
+  # Do not eager load code on boot.
   config.eager_load = false
 
   # Show full error reports.
@@ -40,24 +36,13 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  # Added to send emails
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: ENV['LOCAL_MAIL_HOST'] } 
-  
-  config.action_mailer.smtp_settings = {
-    address:       'smtp.gmail.com',
-    port:          587,
-    domain:         ENV['LOCAL_MAIL_HOST'], 
-    user_name:      ENV['SENDMAIL_USERNAME'],
-    password:       ENV['APP_SPEC_PASSWORD'],
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
-  
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -79,8 +64,6 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.assets.compile = true
-
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
@@ -92,5 +75,4 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
-
-  end
+end

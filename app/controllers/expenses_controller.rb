@@ -1,6 +1,6 @@
 class ExpensesController < ApplicationController
   before_action :authenticate_user!
-
+  
   def new
     @category = Category.find(params[:category_id])
     @expense = flash[:expense] ? Expense.new(flash[:expense]) : Expense.new
