@@ -27,4 +27,3 @@ RSpec.feature 'Expense New', type: :feature do
     expect(page).to have_button('Save Expense')
   end
 end
-
