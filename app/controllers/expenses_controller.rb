@@ -12,9 +12,11 @@ class ExpensesController < ApplicationController
     if @expense.save
       flash[:success] = 'Expense Saved Successfully'
       redirect_to category_path(@expense.category_id)
+
     else
-      flash[:error] = @expense.errors.full_messages.join(', ')
-      redirect_to new_expense_path(category_id: @expense.category_id), flash: { expense: @expense }
+      error_message = @expense.errors.full_messages.join(', ')
+      flash[:error] = error_message
+      redirect_to new_expense_path(category_id: @expense.category_id), flash: { expense: error_message }
     end
   end
 

@@ -11,7 +11,7 @@
   <p class='amt-container'> Total Amount: $<%= @category.expenses.sum(:amount) %> </p>
   
   <div class="categories-container">
-    <% @category.expenses.each do |expense| %>
+    <% @expenses.each do |expense| %>
       <div id="expense_<%= expense.id %>" class= 'category-item'>
         <div class='category-icon'>💸</div>
 
