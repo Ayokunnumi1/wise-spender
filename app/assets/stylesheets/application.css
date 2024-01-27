@@ -59,6 +59,11 @@
   }
 }
 
+.category-form-back-arrow {
+  border: 3px solid black;
+  background-color: #3778c2;
+}
+
 .flashes_container {
   background-color: #3778c2;
   display: flex;

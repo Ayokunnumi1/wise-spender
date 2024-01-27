@@ -1,8 +1,14 @@
+<div class='category-form-back-arrow'>
+  <%= button_to(categories_path, method: :get) do %>
+  <%= image_tag('back-arrow.svg', class: '') %>
+  <% end %>
+</div>
 <section class='form-category-container'>
   <div class='form-category-content'>
     <h1>Category Form</h1>
     
     <%= form_with(model:@category, url: categories_path, local: true, class: 'category-form') do |form| %>
+
     
       <div class="category-field">
         <%= form.label :name, "Category" %>
