@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   dismissButtons.forEach(function(button) {
     button.addEventListener('click', function (e) {
-      console.log('clicked');
       // const alert = e.target.parentElement;
       this.style.display = 'none';
 
