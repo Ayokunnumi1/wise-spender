@@ -45,6 +45,18 @@
      align-items: center;
      justify-content: center;
      gap: 20px;
+    animation: fadeOut 5s forwards;
+ }
+
+ @keyframes fadeOut {
+     0% {
+         opacity: 1;
+     }
+
+     100% {
+         opacity: 0;
+         visibility: hidden;
+     }
  }
 
  .flashes_container {
