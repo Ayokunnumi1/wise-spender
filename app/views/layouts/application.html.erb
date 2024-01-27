@@ -21,8 +21,19 @@
     <%= image_tag 'green-tick.png', class: 'tick-img' %>
     <%= message %>
     <button class="dismiss-flash">OKAY</button>
-  </div>
-  <% end %>
+    </div>
+    <% end %>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var dismissButtons = document.querySelectorAll('.dismiss-flash');
+        dismissButtons.forEach(function(button) {
+          button.addEventListener('click', function() {
+            this.parentElement.style.display = 'none';
+          });
+        });
+      });
+    </script>
 
   <% if user_signed_in? %>
   <section class='menu'>
@@ -44,28 +55,16 @@
     </div>
     </section>
 
-<script>
-  function toggleMenu() {
+    <script>
+    function toggleMenu() {
     const menu = document.querySelector('.menu');
     if (menu.style.display === 'none') {
       menu.style.display = 'block';
     } else {
       menu.style.display = 'none';
     }
-  }
-</script>
+    }
+    </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const dismissButtons = document.querySelectorAll('.dismiss-flash');
-
-  dismissButtons.forEach(function(button) {
-    button.addEventListener('click', function (e) {
-      this.style.display = 'none';
-        location.reload();
-    });
-  });
-});
-</script>
 </body>
 </html>
