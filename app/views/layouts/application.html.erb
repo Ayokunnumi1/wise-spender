@@ -6,8 +6,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <%= favicon_link_tag 'favicon.png' %>
     <%= javascript_importmap_tags %>
 
@@ -55,6 +53,19 @@
       menu.style.display = 'none';
     }
   }
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const dismissButtons = document.querySelectorAll('.dismiss-flash');
+
+  dismissButtons.forEach(function(button) {
+    button.addEventListener('click', function (e) {
+      this.style.display = 'none';
+        location.reload();
+    });
+  });
+});
 </script>
 </body>
 </html>
