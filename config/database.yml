@@ -84,5 +84,6 @@ test:
 production:
   <<: *default
   database: wise_spender_production
-  username: wise_spender
-  password: <%= ENV["WISE_SPENDER_DATABASE_PASSWORD"] %>
+  username: postgres
+  password: <%= ENV["APP_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
