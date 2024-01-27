@@ -23,8 +23,8 @@ RSpec.feature 'Expense New', type: :feature do
     expect(page).to have_field('Category')
     expect(page).to have_field('Amount')
 
-
     # Check for the presence of submit button
     expect(page).to have_button('Save Expense')
   end
 end
+
