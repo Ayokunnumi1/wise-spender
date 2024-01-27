@@ -3,24 +3,41 @@
   <%= image_tag('back-arrow.svg', class: '') %>
   <% end %>
 </div>
+
 <section class='form-category-container'>
   <div class='form-category-content'>
     <h1>Category Form</h1>
     
     <%= form_with(model:@category, url: categories_path, local: true, class: 'category-form') do |form| %>
 
-    
+      <% if @category.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+          <ul>
+            <% @category.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
       <div class="category-field">
         <%= form.label :name, "Category" %>
         <%= form.collection_select(:name, ["Food", "Clothes", "Health", "Rent", "School", "Savings", "Family", "Charity", "Investment", "Business", "Pet", "Maintenance", "Treats", "Transportation", "Other"], :to_s, :to_s, { prompt: "---" }, { class: '' }) %>
+        <% if @category.errors[:name].any? %>
+          <p><%= @category.errors[:name].join(", ") %></p>
+        <% end %>
       </div>
     
       <div class="category-field">
-      <%= form.label :icon, "Category Icon" %>
-      <%= form.collection_select(:icon, [ "🍔", "👚", "🏥", "🏫", "📚", "🐷", "👪", "🎁", "💌", "👔", "🐈", "🛠", "🏖", "🚌", "💡" ], :to_s, :to_s, { prompt: "---" }, { class: '' }) %>
+        <%= form.label :icon, "Category Icon" %>
+        <%= form.collection_select(:icon, [ "🍔", "👚", "🏥", "🏫", "📚", "🐷", "👪", "🎁", "💌", "👔", "🐈", "🛠", "🏖", "🚌", "💡" ], :to_s, :to_s, { prompt: "---" }, { class: '' }) %>
+        <% if @category.errors[:icon].any? %>
+          <p><%= @category.errors[:icon].join(", ") %></p>
+        <% end %>
       </div>
     
-        <div class="category-field submit-food-btn"><%= form.submit 'Submit Food', class: 'submit-food' %></div>
+      <div class="category-field submit-food-btn"><%= form.submit 'Submit Food', class: 'submit-food' %></div>
     <% end %>
   </div>
 </section>
