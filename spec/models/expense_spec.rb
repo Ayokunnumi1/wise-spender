@@ -2,27 +2,28 @@
 require 'rails_helper'
 
 RSpec.describe Expense, type: :model do
-  let(:user) do 
-    user = User.new(name: 'Test User', email: 'test@example.com', password: 'password', password_confirmation: 'password')
+  let(:user) do
+    user = User.new(name: 'Test User', email: 'test@example.com', password: 'password',
+                    password_confirmation: 'password')
     user.skip_confirmation_notification!
     user.save
     user
   end
-  let(:category) { Category.create(name: 'Test Category', icon: 'test_icon', user: user) }
+  let(:category) { Category.create(name: 'Test Category', icon: 'test_icon', user:) }
 
   context 'validations' do
     it 'validates presence and numericality of amount' do
       expense = Expense.new(name: 'Test Expense', amount: nil, author_id: user.id, category_id: category.id)
       expect(expense.valid?).to be_falsey
-      expect(expense.errors[:amount]).to include("can't be blank", "is not a number")
+      expect(expense.errors[:amount]).to include("can't be blank", 'is not a number')
 
       expense.amount = -1
       expect(expense.valid?).to be_falsey
-      expect(expense.errors[:amount]).to include("must be greater than or equal to 0")
+      expect(expense.errors[:amount]).to include('must be greater than or equal to 0')
 
       expense.amount = 1.5
       expect(expense.valid?).to be_falsey
-      expect(expense.errors[:amount]).to include("must be an integer")
+      expect(expense.errors[:amount]).to include('must be an integer')
 
       expense.amount = 1000
       expect(expense.valid?).to be_truthy

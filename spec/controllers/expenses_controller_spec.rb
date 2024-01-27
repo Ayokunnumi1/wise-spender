@@ -6,8 +6,8 @@ RSpec.describe ExpensesController, type: :controller do
   include FactoryBot::Syntax::Methods
 
   let(:user) { create(:user) }
-  let(:category) { create(:category, user: user) }
-  let(:expense) { create(:expense, author: user, category: category) }
+  let(:category) { create(:category, user:) }
+  let(:expense) { create(:expense, author: user, category:) }
 
   before do
     sign_in user
@@ -23,17 +23,17 @@ RSpec.describe ExpensesController, type: :controller do
   describe 'POST #create' do
     context 'with valid attributes' do
       it 'creates a new expense' do
-        expect {
+        expect do
           post :create, params: { expense: attributes_for(:expense, category_id: category.id) }
-        }.to change(Expense, :count).by(1)
+        end.to change(Expense, :count).by(1)
       end
     end
 
     context 'with invalid attributes' do
       it 'does not save the new expense' do
-        expect {
+        expect do
           post :create, params: { expense: attributes_for(:expense, name: nil, category_id: category.id) }
-        }.not_to change(Expense, :count)
+        end.not_to change(Expense, :count)
       end
     end
   end
@@ -66,9 +66,9 @@ RSpec.describe ExpensesController, type: :controller do
   describe 'DELETE #destroy' do
     it 'deletes the expense' do
       expense
-      expect {
+      expect do
         delete :destroy, params: { id: expense.id }
-      }.to change(Expense, :count).by(-1)
+      end.to change(Expense, :count).by(-1)
     end
   end
 end

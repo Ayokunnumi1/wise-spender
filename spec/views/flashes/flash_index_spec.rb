@@ -1,12 +1,12 @@
 # spec/features/index_spec.rb
 require 'rails_helper'
 
-RSpec.feature "Index", type: :feature do
+RSpec.feature 'Index', type: :feature do
   before do
     visit root_path
   end
 
-  scenario "visits index page" do
+  scenario 'visits index page' do
     # Check for the presence of certain elements
     expect(page).to have_css('.flashes_container')
     expect(page).to have_css('.splashlogo_cont')

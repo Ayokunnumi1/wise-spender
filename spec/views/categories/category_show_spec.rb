@@ -1,20 +1,22 @@
 # spec/features/category_show_spec.rb
 require 'rails_helper'
 
-RSpec.feature "Category Show", type: :feature do
+RSpec.feature 'Category Show', type: :feature do
   let(:user) do
     User.create!(name: 'John Doe', email: 'sample@gmail.com', password: 'password', confirmed_at: Time.zone.now)
   end
 
-  let(:category) { Category.create!(name: 'Food', icon: "🍔", user: user) }
-  let!(:expense) { Expense.create!(name: 'Burger', amount: 10, category: category, author: user) } # associate the author with the expense
-
+  let(:category) { Category.create!(name: 'Food', icon: '🍔', user:) }
+  # associate the author with the expense
+  let!(:expense) do
+    Expense.create!(name: 'Burger', amount: 10, category:, author: user)
+  end
   before do
     login_as(user, scope: :user)
     visit category_path(category)
   end
 
-  scenario "visits category show page" do
+  scenario 'visits category show page' do
     # Check for the presence of certain elements
     expect(page).to have_css('.expense-section')
     expect(page).to have_css('.expense-navbar')

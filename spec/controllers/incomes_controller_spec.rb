@@ -6,7 +6,7 @@ RSpec.describe IncomesController, type: :controller do
   include FactoryBot::Syntax::Methods
 
   let(:user) { create(:user) }
-  let(:income) { create(:income, user: user) }
+  let(:income) { create(:income, user:) }
 
   before do
     sign_in user
@@ -22,17 +22,17 @@ RSpec.describe IncomesController, type: :controller do
   describe 'POST #create' do
     context 'with valid attributes' do
       it 'creates a new income' do
-        expect {
+        expect do
           post :create, params: { income: attributes_for(:income) }
-        }.to change(Income, :count).by(1)
+        end.to change(Income, :count).by(1)
       end
     end
 
     context 'with invalid attributes' do
       it 'does not save the new income' do
-        expect {
+        expect do
           post :create, params: { income: attributes_for(:income, amount: nil) }
-        }.not_to change(Income, :count)
+        end.not_to change(Income, :count)
       end
     end
   end
@@ -40,9 +40,9 @@ RSpec.describe IncomesController, type: :controller do
   describe 'DELETE #clear_all' do
     it 'deletes all incomes' do
       income
-      expect {
+      expect do
         delete :clear_all
-      }.to change(Income, :count).by(-1)
+      end.to change(Income, :count).by(-1)
     end
   end
 end

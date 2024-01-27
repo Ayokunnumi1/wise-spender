@@ -1,7 +1,7 @@
 # spec/features/category_new_spec.rb
 require 'rails_helper'
 
-RSpec.feature "Category New", type: :feature do
+RSpec.feature 'Category New', type: :feature do
   let(:user) do
     User.create!(name: 'John Doe', email: 'sample@gmail.com', password: 'password', confirmed_at: Time.zone.now)
   end
@@ -11,7 +11,7 @@ RSpec.feature "Category New", type: :feature do
     visit new_category_path
   end
 
-  scenario "visits new category page" do
+  scenario 'visits new category page' do
     # Check for the presence of certain elements
     expect(page).to have_css('.form-category-container')
     expect(page).to have_css('.form-category-content')
@@ -24,6 +24,6 @@ RSpec.feature "Category New", type: :feature do
     expect(page).to have_button('Submit Food')
 
     # Check for the presence of form
-    expect(page).to have_selector("form.category-form")
+    expect(page).to have_selector('form.category-form')
   end
 end

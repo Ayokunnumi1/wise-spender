@@ -2,8 +2,9 @@
 require 'rails_helper'
 
 RSpec.describe Income, type: :model do
-  let(:user) do 
-    user = User.new(name: 'Test User', email: 'test@example.com', password: 'password', password_confirmation: 'password')
+  let(:user) do
+    user = User.new(name: 'Test User', email: 'test@example.com', password: 'password',
+                    password_confirmation: 'password')
     user.skip_confirmation_notification!
     user.save
     user
@@ -13,15 +14,15 @@ RSpec.describe Income, type: :model do
     it 'validates presence and numericality of amount' do
       income = Income.new(amount: nil, user_id: user.id)
       expect(income.valid?).to be_falsey
-      expect(income.errors[:amount]).to include("can't be blank", "is not a number")
+      expect(income.errors[:amount]).to include("can't be blank", 'is not a number')
 
       income.amount = -1
       expect(income.valid?).to be_falsey
-      expect(income.errors[:amount]).to include("must be greater than or equal to 0")
+      expect(income.errors[:amount]).to include('must be greater than or equal to 0')
 
       income.amount = 1.5
       expect(income.valid?).to be_falsey
-      expect(income.errors[:amount]).to include("must be an integer")
+      expect(income.errors[:amount]).to include('must be an integer')
 
       income.amount = 1000
       expect(income.valid?).to be_truthy

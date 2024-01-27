@@ -11,10 +11,12 @@ RSpec.describe User, type: :model do
   end
 
   context 'associations' do
-    let(:user) { User.new(name: 'Test User', email: 'test@example.com', password: 'password', password_confirmation: 'password') }
-    let(:category) { Category.create(name: 'Test Category', user: user) }
-    let(:expense) { Expense.create(name: 'Test Expense', category: category) }
-    let(:income) { Income.create(amount: 1000, user: user) } # Changed 'name' to 'amount'
+    let(:user) do
+      User.new(name: 'Test User', email: 'test@example.com', password: 'password', password_confirmation: 'password')
+    end
+    let(:category) { Category.create(name: 'Test Category', user:) }
+    let(:expense) { Expense.create(name: 'Test Expense', category:) }
+    let(:income) { Income.create(amount: 1000, user:) } # Changed 'name' to 'amount'
 
     before do
       # Disable sending confirmation email

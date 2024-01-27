@@ -2,8 +2,9 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  let(:user) do 
-    user = User.new(name: 'Test User', email: 'test@example.com', password: 'password', password_confirmation: 'password')
+  let(:user) do
+    user = User.new(name: 'Test User', email: 'test@example.com', password: 'password',
+                    password_confirmation: 'password')
     user.skip_confirmation_notification! # Add this line to skip sending confirmation email
     user.save
     user
@@ -11,20 +12,20 @@ RSpec.describe Category, type: :model do
 
   context 'validations' do
     it 'validates presence of name' do
-      category = Category.new(name: nil, icon: 'test_icon', user: user)
+      category = Category.new(name: nil, icon: 'test_icon', user:)
       expect(category.valid?).to be_falsey
       expect(category.errors[:name]).to include("can't be blank")
     end
 
     it 'validates presence of icon' do
-      category = Category.new(name: 'Test Category', icon: nil, user: user)
+      category = Category.new(name: 'Test Category', icon: nil, user:)
       expect(category.valid?).to be_falsey
       expect(category.errors[:icon]).to include("can't be blank")
     end
   end
 
   context 'associations' do
-    let(:category) { Category.create(name: 'Test Category', icon: 'test_icon', user: user) }
+    let(:category) { Category.create(name: 'Test Category', icon: 'test_icon', user:) }
     let(:expense) { Expense.create(name: 'Test Expense', amount: 1000, author_id: user.id, category_id: category.id) }
 
     it 'belongs to user' do
