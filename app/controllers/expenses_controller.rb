@@ -3,7 +3,7 @@ class ExpensesController < ApplicationController
 
   def new
     @category = Category.find(params[:category_id])
-    @expense = flash[:expense] ? Expense.new(flash[:expense]) : Expense.new
+    @expense = Expense.new
   end
 
   def create
