@@ -19,8 +19,8 @@ RSpec.feature 'Category New', type: :feature do
 
     # Check for the presence of certain content
     expect(page).to have_content('Category Form')
-    expect(page).to have_content('Category')
-    expect(page).to have_content('Category Icon')
+    expect(page).to have_content('Name')
+    expect(page).to have_content('Icon')
     expect(page).to have_button('Submit Food')
 
     # Check for the presence of form

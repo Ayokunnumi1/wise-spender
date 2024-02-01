@@ -11,7 +11,7 @@
     <%= form_with(model:@category, url: categories_path, local: true, class: 'category-form') do |form| %>
 
       <div class="category-field">
-        <%= form.label :name, "Category" %>
+        <%= form.label :name, "Name" %>
         <%= form.collection_select(:name, ["Food", "Clothes", "Health", "Rent", "School", "Savings", "Family", "Charity", "Investment", "Business", "Pet", "Maintenance", "Treats", "Transportation", "Other"], :to_s, :to_s, { prompt: "---" }, { class: 'category-field' }) %>
       </div>
     
