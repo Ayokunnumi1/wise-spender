@@ -21,8 +21,8 @@ RSpec.feature 'Category Edit', type: :feature do
 
     # Check for the presence of certain content
     expect(page).to have_content('Edit Category')
-    expect(page).to have_content('New Category Name')
-    expect(page).to have_content('New Category Icon')
+    expect(page).to have_content('New Name')
+    expect(page).to have_content('New Icon')
     expect(page).to have_button('Save Category')
 
     # Check for the presence of form
