@@ -32,15 +32,19 @@
       <div class='user-details'>
         <%= image_tag 'user.svg', class: 'user-icon' %>
         <p><%= current_user.name %></p>
-        <p><%= current_user.email %></p>
       </div>
-      <br><br>
-      <ul class='menu-links'>
     <ul class='menu-links'>
-       <li class="menulinks"><%= link_to 'Home', categories_path, onclick: 'closeMenu()', class: 'menulinks' %></li>
-       <li class="menulinks"><%= button_to 'Sign Out', destroy_user_session_path, method: :delete, onclick: 'closeMenu()', class: 'removebtnfeature' %></li>
+       <li class="menulinks line">
+        <%= button_to categories_path, method: :get, onclick: 'closeMenu()', class: 'menulinks' do %>
+        <%= image_tag('home.svg', alt: 'Home') %> Home
+        <% end %>
+        </li>
+       <li class="menulinks line">
+       <%= button_to destroy_user_session_path, method: :delete, onclick: 'closeMenu()', class: 'menulinks' do %>
+       <%= image_tag('sign-out.svg', alt: 'Sign Out') %> Sign Out
+       <% end %>
+       </li>
     </ul>
-      </ul>
       <% end %>
     </div>
     </section>

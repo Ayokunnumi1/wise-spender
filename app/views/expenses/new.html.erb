@@ -1,5 +1,5 @@
 <div class='category-form-back-arrow'>
-  <%= button_to(categories_path, method: :get) do %>
+  <%= button_to(category_path(@category), method: :get) do %>
   <%= image_tag('back-arrow.svg', class: '') %>
   <% end %>
 </div>
@@ -12,33 +12,14 @@
         
             <%= form.hidden_field :category_id, value: @category.id %>
         
-            <% if @expense.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
-                <ul>
-                  <% @expense.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-
             <div class="expense-field">
-                <%= form.label :name, 'Category', class: "" %>
-                <%= form.text_field :name %>
-                <% if @expense.errors[:name].any? %>
-                  <p><%= @expense.errors[:name].join(", ") %></p>
-                <% end %>
-                <br />
+            <%= form.label :name, "Category" %>
+            <%= form.collection_select(:name, ["Food", "Clothes", "Health", "Rent", "School", "Savings", "Family", "Charity", "Investment", "Business", "Pet", "Maintenance", "Treats", "Transportation", "Other"], :to_s, :to_s, { prompt: "---" }, { class: 'category-field' }) %>
             </div>
         
             <div class="expense-field">
-                <%= form.label :amount, 'Amount', class: "" %>
+                <%= form.label :amount, 'Amount' %>
                 <%= form.number_field :amount %>
-                <% if @expense.errors[:amount].any? %>
-                  <p><%= @expense.errors[:amount].join(", ") %></p>
-                <% end %>
-                <br />
             </div>
 
             <div class="expense-field submit-expense-btn">

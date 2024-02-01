@@ -1,6 +1,6 @@
 <div class='category-form-back-arrow'>
   <%= button_to(categories_path, method: :get) do %>
-  <%= image_tag('back-arrow.svg', class: '') %>
+  <%= image_tag('back-arrow.svg', class: 'back-arrow') %>
   <% end %>
 </div>
 
@@ -10,31 +10,14 @@
     
     <%= form_with(model:@category, url: categories_path, local: true, class: 'category-form') do |form| %>
 
-      <% if @category.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
-          <ul>
-            <% @category.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
       <div class="category-field">
         <%= form.label :name, "Category" %>
-        <%= form.collection_select(:name, ["Food", "Clothes", "Health", "Rent", "School", "Savings", "Family", "Charity", "Investment", "Business", "Pet", "Maintenance", "Treats", "Transportation", "Other"], :to_s, :to_s, { prompt: "---" }, { class: '' }) %>
-        <% if @category.errors[:name].any? %>
-          <p><%= @category.errors[:name].join(", ") %></p>
-        <% end %>
+        <%= form.collection_select(:name, ["Food", "Clothes", "Health", "Rent", "School", "Savings", "Family", "Charity", "Investment", "Business", "Pet", "Maintenance", "Treats", "Transportation", "Other"], :to_s, :to_s, { prompt: "---" }, { class: 'category-field' }) %>
       </div>
     
       <div class="category-field">
         <%= form.label :icon, "Category Icon" %>
-        <%= form.collection_select(:icon, [ "🍔", "👚", "🏥", "🏫", "📚", "🐷", "👪", "🎁", "💌", "👔", "🐈", "🛠", "🏖", "🚌", "💡" ], :to_s, :to_s, { prompt: "---" }, { class: '' }) %>
-        <% if @category.errors[:icon].any? %>
-          <p><%= @category.errors[:icon].join(", ") %></p>
-        <% end %>
+        <%= form.collection_select(:icon, [ "🍔", "👚", "🏥", "🏫", "📚", "🐷", "👪", "🎁", "💌", "👔", "🐈", "🛠", "🏖", "🚌", "💡" ], :to_s, :to_s, { prompt: "---" }, { class: 'category-field' }) %>
       </div>
     
       <div class="category-field submit-food-btn"><%= form.submit 'Submit Food', class: 'submit-food' %></div>

@@ -4,7 +4,7 @@
     <%= image_tag('back-arrow.svg', class: '') %>
     <% end %>
     <p class= 'expense-text'> <%= @category.name %> </p>
-    <%= image_tag('hamburger.svg', class: 'hamburger') %>
+    <%= image_tag('hamburger.svg', class: 'hamburger', onclick: 'toggleMenu()') %>
     </div>
     <p class='most-recent'>Most Recent</p>
 
