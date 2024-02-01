@@ -14,9 +14,8 @@ class ExpensesController < ApplicationController
       redirect_to category_path(@expense.category_id)
 
     else
-      error_message = @expense.errors.full_messages.join(', ')
-      flash[:error] = error_message
-      redirect_to new_expense_path(category_id: @expense.category_id), flash: { expense: error_message }
+      flash[:error] = 'Expense Not Saved, try later'
+      redirect_to new_expense_path(category_id: @expense.category_id)
     end
   end
 
