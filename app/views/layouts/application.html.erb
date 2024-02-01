@@ -20,10 +20,14 @@
     <%= yield %>
   <% flash.each do |key, message| %>
   <div class="alert <%= key %>">
-    <%= image_tag 'green-tick.png', class: 'tick-img' %>
-    <%= message %>
-    </div>
+    <% if key == 'error' %>
+      <%= image_tag 'error-icon.svg', class: 'tick-img' %>
+    <% else %>
+      <%= image_tag 'green-tick.png', class: 'tick-img' %>
     <% end %>
+    <%= message %>
+   </div>
+   <% end %>
 
   <% if user_signed_in? %>
   <section class='menu'>
