@@ -7,10 +7,11 @@ class IncomesController < ApplicationController
 
   def create
     @income = current_user.incomes.build(income_params)
-
     if @income.save
-      redirect_to categories_path, notice: 'Income Added Successfully.'
+      flash[:success] = 'Income Added Successfully'
+      redirect_to categories_path
     else
+      flash[:error] = 'Income Not Saved, try later'
       render :new
     end
   end
