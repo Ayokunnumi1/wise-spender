@@ -3,6 +3,9 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = current_user.categories
+    @total_expenses = @categories.sum { |category| category.expenses.sum(:amount) }
+    @income = current_user.incomes.last
+    @balance = @income ? @income.amount - @total_expenses : - @total_expenses
   end
 
   def new
@@ -29,23 +32,24 @@ class CategoriesController < ApplicationController
   end
 
   def update
-  @category = Category.find(params[:id])
-  if @category.update(category_params)
-    redirect_to categories_path, notice: 'Category was successfully updated.'
-  else
-    render :edit
+    @category = Category.find(params[:id])
+    if @category.update(category_params)
+      flash[:success] = 'Category was successfully updated.'
+      redirect_to categories_path
+    else
+      render :edit
+    end
   end
- end
 
- def destroy
-  @category = Category.find(params[:id])
-  @category.destroy
-  redirect_to categories_path, notice: 'Category was successfully deleted.'
- end
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    flash[:error] = 'category was successfully deleted.'
+    redirect_to categories_path
+  end
 
- def show
-  @category = Category.find(params[:id])
-  @expenses = @category.expenses
- end
-  
+  def show
+    @category = Category.find(params[:id])
+    @expenses = @category.expenses
+  end
 end

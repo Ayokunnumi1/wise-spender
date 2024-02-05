@@ -1,6 +1,10 @@
 require "active_support/core_ext/integer/time"
+require 'dotenv/rails-now'
+require 'dotenv/load'
+require "rails/all"
 
 Rails.application.configure do
+  Dotenv::Railtie.load
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -21,7 +25,7 @@ Rails.application.configure do
   # config.require_master_key = true
 
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
-  # config.public_file_server.enabled = false
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV['RENDER'].present?
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
@@ -35,10 +39,29 @@ Rails.application.configure do
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
-
+   
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
+  # Added to send emails
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] } 
+  
+  config.action_mailer.smtp_settings = {
+    address:       'smtp.gmail.com',
+    port:          587,
+    domain:         ENV['MAIL_HOST'], 
+    user_name:      ENV['SENDMAIL_USERNAME'],
+    password:       ENV['APP_SPEC_PASSWORD'],
+    authentication: :plain,
+    enable_starttls_auto: true,
+    openssl_verify_mode: 'none',
+    open_timeout: 5.minutes,
+    read_timeout: 5.minutes
+  }
+  
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   # config.action_cable.url = "wss://example.com/cable"
@@ -69,7 +92,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque
-  # config.active_job.queue_name_prefix = "money_saver_production"
+  # config.active_job.queue_name_prefix = "wise_spender_production"
 
   config.action_mailer.perform_caching = false
 

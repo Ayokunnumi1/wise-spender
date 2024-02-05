@@ -1,15 +1,30 @@
-<h1>Edit Category</h1>
-
-<section class= ''>
-<%= form_with(model: @category, url: category_path(@category), method: :patch) do |form| %>
-  <%= form.label :name, "New Category Name:"  %>
-  <%= form.text_field :name %>
-<br><br>
-  <%= form.label :icon, "New Category Icon:"  %>
-  <%= form.collection_select(:icon, [ "🍔", "👚", "🏥", "🏫", "📚", "🐷", "👪", "🎁", "💌", "👔", "🐈", "🛠", "🏖", "🚌", "💡" ], :to_s, :to_s, { prompt: "---" }, { class: 'fa-select' }) %>
-
-  <div class= ''>
-  <%= form.submit "Save Category", class: '' %>
-  </div>
+<div class='category-form-back-arrow'>
+  <%= button_to(categories_path, method: :get) do %>
+  <%= image_tag('back-arrow.svg', class: 'back-arrow') %>
   <% end %>
+</div>
+
+<section class='form-category-container'>
+  <div class='form-category-content'>
+    <h1>Edit Category</h1>
+    
+    <%= form_with(model: @category, url: category_path(@category), method: :patch, class: 'category-form') do |form| %>
+      
+      <div class="category-field">
+        <%= form.label :name, "New Name"  %>
+        <br/>
+        <%= form.text_field :name, class: "category-field" %>
+      </div>
+
+      <div class="category-field">
+        <%= form.label :icon, "New Icon"  %>
+        <br/>
+        <%= form.collection_select(:icon, [ "🍔", "👚", "🏥", "🏫", "📚", "🐷", "👪", "🎁", "💌", "👔", "🐈", "🛠", "🏖", "🚌", "💡" ], :to_s, :to_s, { prompt: "---" }, { class: "category-field" }) %>
+      </div>
+    
+      <div class="category-field submit-food-btn">
+        <%= form.submit "Save Category", class: 'submit-food' %>
+      </div>
+    <% end %>
+  </div>
 </section>

@@ -1,14 +1,29 @@
-<h1>Expenses Form</h1>
+<div class='category-form-back-arrow'>
+  <%= button_to(category_path(@category), method: :get) do %>
+  <%= image_tag('back-arrow.svg', class: '') %>
+  <% end %>
+</div>
 
-<%= form_with(model:@expense, url: expenses_path, local: true) do |form| %>
-    
-    <%= form.hidden_field :category_id, value: @category.id %>
-    
-    <%= form.label :name, 'Breakdown:', class: "" %>
-    <%= form.text_field :name %><br />
+<section class='form-expense-container'>
+    <div class= 'form-expense-content'>
+        <h1>Expenses Form</h1>
+        
+        <%= form_with(model:@expense, url: expenses_path, local: true, class:'expense-form') do |form| %>
+        
+            <%= form.hidden_field :category_id, value: @category.id %>
+        
+            <div class="expense-field">
+            <%= form.label :name, "Category" %>
+            <%= form.collection_select(:name, ["Food", "Clothes", "Health", "Rent", "School", "Savings", "Family", "Charity", "Investment", "Business", "Pet", "Maintenance", "Treats", "Transportation", "Other"], :to_s, :to_s, { prompt: "---" }, { class: 'category-field' }) %>
+            </div>
+        
+            <div class="expense-field">
+                <%= form.label :amount, 'Amount' %>
+                <%= form.number_field :amount %>
+            </div>
 
-    <%= form.label :amount, 'Amount', class: "" %>
-    <%= form.number_field :amount %><br />
-
-    <%= form.submit 'Save Expense', class: "" %>
-<% end %>
+            <div class="expense-field submit-expense-btn">
+            <%= form.submit 'Save Expense', class: "submit-expense" %></div>
+        <% end %>
+    </div>
+</section>

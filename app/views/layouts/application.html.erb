@@ -6,21 +6,63 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+   <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+
     <%= favicon_link_tag 'favicon.png' %>
+    <%= javascript_importmap_tags %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
-    <%= stylesheet_link_tag "category", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <%= yield %>
-    <% flash.each do |key, message| %>
+  <% flash.each do |key, message| %>
   <div class="alert <%= key %>">
+    <% if key == 'error' %>
+      <%= image_tag 'error-icon.svg', class: 'tick-img' %>
+    <% else %>
+      <%= image_tag 'green-tick.png', class: 'tick-img' %>
+    <% end %>
     <%= message %>
-  </div>
-  <% end %>
-  </body>
+   </div>
+   <% end %>
+
+  <% if user_signed_in? %>
+  <section class='menu'>
+    <div class='menu-content'>
+      <div class="close_icon_cont" onclick="toggleMenu()"><p class="close_icon">X</p></div>
+      <div class='user-details'>
+        <%= image_tag 'user.svg', class: 'user-icon' %>
+        <p><%= current_user.name %></p>
+      </div>
+    <ul class='menu-links'>
+       <li class="menulinks line">
+        <%= button_to categories_path, method: :get, onclick: 'closeMenu()', class: 'menulinks' do %>
+        <%= image_tag('home.svg', alt: 'Home') %> Home
+        <% end %>
+        </li>
+       <li class="menulinks line">
+       <%= button_to destroy_user_session_path, method: :delete, onclick: 'closeMenu()', class: 'menulinks' do %>
+       <%= image_tag('sign-out.svg', alt: 'Sign Out') %> Sign Out
+       <% end %>
+       </li>
+    </ul>
+      <% end %>
+    </div>
+    </section>
+
+    <script>
+    function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    if (menu.style.display === 'none') {
+      menu.style.display = 'block';
+    } else {
+      menu.style.display = 'none';
+    }
+    }
+    </script>
+
+</body>
 </html>

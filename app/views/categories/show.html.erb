@@ -1,13 +1,32 @@
-<section>
-  <% @category.expenses.each do |expense| %>
-    <div id="expense_<%= expense.id %>">
-      <div>💸</div>
-      <p><%= expense.name %></p>
-      <p>$<%= expense.amount %></p>
-      <%= link_to 'Edit', edit_expense_path(expense), class: '' %>
-      <%= button_to 'Delete', expense_path(expense), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: '' %>
+<section class='expense-section'>
+ <div class='expense-navbar'>
+    <%= button_to(categories_path, method: :get) do %>
+    <%= image_tag('back-arrow.svg', class: '') %>
+    <% end %>
+    <p class= 'expense-text'> <%= @category.name %> </p>
+    <%= image_tag('hamburger.svg', class: 'hamburger', onclick: 'toggleMenu()') %>
     </div>
-  <% end %>
+    <p class='most-recent'>Most Recent</p>
+
+  <p class='amt-container'> Total Amount: $<%= @category.expenses.sum(:amount) %> </p>
   
-  <%= link_to 'Add Expenses', new_expense_path(category_id: @category.id) %>
+  <div class="categories-container">
+    <% @expenses.each do |expense| %>
+      <div id="expense_<%= expense.id %>" class= 'category-item'>
+        <div class='category-icon'>💸</div>
+
+        <div>
+          <p class='category-name'><%= expense.name %></p>
+          <div class='category-path'>
+            <%= button_to 'Edit', edit_expense_path(expense), method: :get %>
+            <%= button_to 'Delete', expense_path(expense), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: '' %>
+          </div>
+        </div>
+
+        <div class='category-amt'>$<%= expense.amount %></div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="add-expense-button"><%= link_to 'Add New Expenses', new_expense_path(category_id: @category.id), class: "add-expense-btn" %></div>
 </section>

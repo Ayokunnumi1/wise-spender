@@ -53,11 +53,16 @@ Rails.application.configure do
     user_name:      ENV['SENDMAIL_USERNAME'],
     password:       ENV['APP_SPEC_PASSWORD'],
     authentication: :plain,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    openssl_verify_mode: 'none',
+    open_timeout: 5.minutes,
+    read_timeout: 5.minutes
   }
 
   config.action_mailer.perform_caching = false
-  
+
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
