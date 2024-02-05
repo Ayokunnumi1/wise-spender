@@ -10,7 +10,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :password, length: { minimum: 8 }, if: :password
   validates :password, format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}\z/,
-                                 message: 'must include at least one lowercase letter, one uppercase letter, and one digit' },
+                                 message: 'must include at least one lowercase letter,
+                                 one uppercase letter, and one digit' },
                        if: :password
 
   validates :email, presence: true, uniqueness: true
