@@ -1,11 +1,10 @@
-<a name="readme-top"></a>
+# WISE SPENDER <a name="readme-top"></a>
 
 <div align="center">
-
-<!-- MAIN HEADING -->
-
-  <h3><b>WISE SPENDER APP</b></h3>
-
+  <img src="./app/assets/images/budget-app.gif" alt="wise spender"/>
+  <br/>
+  <br/>
+  <br/>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -41,8 +40,7 @@
 2. RUBY ON RAILS
 3. JAVASCRIPT
 4. ERB
-5. HTML
-6. CSS
+5. CSS
 
 ### Tech Stack <a name="tech-stack"></a>
 
