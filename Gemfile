@@ -16,7 +16,7 @@ gem 'jquery-rails'
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.1.2'
+gem 'rails', '~> 8.1.3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -76,4 +76,4 @@ group :development do
   # gem "spring"
 end
 
-gem 'devise', '~> 4.9'
+gem 'devise', '~> 5.0'
